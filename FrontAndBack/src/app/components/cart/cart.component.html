@@ -1,0 +1,11 @@
+<app-ui-header></app-ui-header>
+
+<div class="container container-table">
+<h2 class="card">Cart</h2>
+<app-ui-carousel>
+  <app-ui-product-card
+    *ngFor="let product of products$ | async"
+    [product]="product"
+  />
+</app-ui-carousel>
+</div>

@@ -1,0 +1,14 @@
+
+<div class="card">
+  <div class="form-group">
+    <h2>Price, ₽</h2>
+    <input class="form-control" name="price_from" type="number" placeholder="от ₽" />
+    <input class="form-control" name="price_to" type="number" placeholder="до ₽"/>
+  </div>
+  <div class="form-group" *ngFor="let filterOption of filterOptions">
+    <h2>{{filterOption.title}}</h2>
+    <label *ngFor="let option of filterOption.options">
+      <input type="checkbox" class="form-check-input" [checked]="option.value" (click)="handleOptionClick(option)" />{{option.label}}
+    </label>
+  </div>
+</div>

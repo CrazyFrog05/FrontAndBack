@@ -1,0 +1,11 @@
+/* .card {
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  padding: 2em;
+  color: yellow;
+} */
+
+.img {
+  max-width: 128px;
+}

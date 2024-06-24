@@ -1,0 +1,61 @@
+<app-ui-header></app-ui-header>
+
+<div class="container container-table">
+<!-- <div *ngLet="{products: (products$ | async), } as data"> -->
+<!-- <button (click)="handleTest()">Test</button> -->
+@if (selectedProduct) {
+
+} @else if (selectedCategory) {
+<div>{{'Главная/'+selectedCategory.name}}</div>
+<div (click)="handleBackToCatalog()">{{'< '+selectedCategory.name}}</div>
+
+<app-ui-filter
+  [filterOptions]="filterOptions"
+  (filterChange)="handleFilterChange($event)"
+/>
+
+<app-ui-carousel>
+  <app-ui-product-card
+    *ngFor="let product of products$ | async"
+    [product]="product"
+  />
+</app-ui-carousel>
+} @else {
+<app-ui-carousel>
+  <app-ui-advertisment-card
+    *ngFor="let advertisment of advertisments$ | async"
+    [canEdit]="true"
+    [advertisment]="advertisment"
+    (delete)="handleDeleteAdvertisment($event)"
+    (update)="handleUpdateAdvertisment($event)"
+  />
+</app-ui-carousel>
+<button (click)="handleAddAdvertisment()" class="btn btn-outline-success ">Add Advertisment</button>
+
+<h2>Каталог</h2>
+<app-ui-carousel>
+  <app-ui-category-card
+    *ngFor="let category of categories$ | async"
+    [canEdit]="true"
+    [category]="category"
+    (select)="handleCategoryClick(category)"
+    (delete)="handleDeleteCategory($event)"
+    (update)="handleUpdateCategory($event)"
+  />
+</app-ui-carousel>
+<button (click)="handleAddCategory()" class="btn btn-outline-success ">Add Category</button>
+
+<h2>Акции</h2>
+<app-ui-carousel>
+  <app-ui-product-card
+    *ngFor="let product of products$ | async"
+    [canEdit]="true"
+    [product]="product"
+    (delete)="handleDeleteProduct($event)"
+    (update)="handleUpdateProduct($event)"
+  />
+</app-ui-carousel>
+<button (click)="handleAddProduct()" class="btn btn-outline-success ">Add Product</button>
+}
+</div>
+<!-- </div> -->

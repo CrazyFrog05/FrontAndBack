@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-body" >
+    @if (editMode && advertismentEdit) {
+      <h5 class="card-title">Editing</h5>
+      <div class=" list-group list-group-flush">
+        <label class="list-group-item">Image:
+          <input class="card-text" type="text" [(ngModel)]="advertismentEdit.img" />
+        </label>
+        <label class="list-group-item">Title:
+          <input class="card-text" type="text" [(ngModel)]="advertismentEdit.title" />
+        </label>
+        <label class="list-group-item">Text:
+          <input class="card-text" type="text" [(ngModel)]="advertismentEdit.text" />
+        </label>
+      </div>
+    } @else {
+      <div class="card-body">
+        <img alt="product image" src="{{ advertisment.img }}" class="img card-imp-top" />
+        <h5 class="card-title">Title: {{ advertisment.title }}</h5>
+        <p class="card-text">Text: {{ advertisment.text }}</p>
+      </div>
+    }
+</div>
+@if (canEdit) {
+  @if (editMode) {
+    <button (click)="handleEditCancel()" class="btn btn-outline-warning ">Cancel</button>
+    <button (click)="handleUpdate()" class="btn btn-outline-warning ">Update</button>
+  } @else {
+    <button (click)="handleEdit()" class="btn btn-outline-warning ">Edit</button>
+    <button (click)="handleDelete()" class="btn btn-outline-danger ">Delete</button>
+  }
+}
+</div>

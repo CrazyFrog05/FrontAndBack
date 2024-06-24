@@ -1,0 +1,30 @@
+<app-ui-header></app-ui-header>
+<div class="container container-table">
+  <form [formGroup]="loginForm" class="form-inline my-2 my-lg-0">
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="Адрес электронной почты"
+      class="form-control"
+    />
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      placeholder="Пароль"
+      class="form-control"
+    />
+  </form>
+  <button
+    (click)="handleSubmit()"
+    [disabled]="!loginForm.valid"
+    class="btn btn-outline-success"
+  >
+    Войти
+  </button>
+  <div>
+    Еще нет аккаунта?
+    <a href="#" (click)="handleLogin($event)">Зарегистрируйтесь</a>
+  </div>
+</div>

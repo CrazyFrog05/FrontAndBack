@@ -1,0 +1,14 @@
+<app-ui-header></app-ui-header>
+
+<div class="container container-table">
+<div *ngIf="(user$ | async) as user; else noUser" class="card">
+  <div class="form-control">Firstname: {{user.firstname}}</div>
+  <div class="form-control">Lastname: {{user.lastname}}</div>
+  <div class="form-control">Email: {{user.email}}</div>
+  <div class="form-control">Phone: {{user.phone}}</div>
+</div>
+</div>
+
+<ng-template #noUser>
+  <div>User not found</div>
+</ng-template>

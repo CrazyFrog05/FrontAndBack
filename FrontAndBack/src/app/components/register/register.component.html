@@ -1,0 +1,51 @@
+<app-ui-header></app-ui-header>
+
+<div class="container container-table">
+  <form [formGroup]="registrationForm" class="form-inline my-2 my-lg-0">
+    <input
+      id="firstname"
+      type="text"
+      formControlName="firstName"
+      placeholder="Имя"
+      class="form-control"
+    />
+    <input
+      id="lastname"
+      type="text"
+      formControlName="lastName"
+      placeholder="Фамилия"
+      class="form-control"
+    />
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="Адрес электронной почты"
+      class="form-control"
+    />
+    <input
+      id="phone"
+      type="phone"
+      formControlName="phone"
+      placeholder="Номер телефона"
+      class="form-control"
+    />
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      placeholder="Пароль"
+      class="form-control"
+    />
+  </form>
+  <button
+    (click)="handleSubmit()"
+    [disabled]="!registrationForm.valid"
+    class="btn btn-outline-success"
+  >
+    Зарегистрироваться
+  </button>
+  <div>
+    Уже есть аккаунт? <a href="#" (click)="handleLogin($event)">Войти</a>
+  </div>
+</div>

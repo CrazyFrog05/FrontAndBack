@@ -1,0 +1,18 @@
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+import { provideState, provideStore } from '@ngrx/store';
+import { catalogReducer, catalogFeatureKey } from './store/reducers';
+import { provideEffects } from '@ngrx/effects';
+import { ApiEffects } from './store/effects';
+import { UtilsModule } from './utils/utils.module';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(routes),
+    provideStore(),
+    provideState({ name: catalogFeatureKey, reducer: catalogReducer }),
+    provideEffects(ApiEffects),
+  ],
+};
